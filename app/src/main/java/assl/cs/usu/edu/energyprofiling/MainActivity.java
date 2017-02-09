@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
             getCpuTime();
             getCpuFreq();
+            bubbleSort(1000);
+            getCpuTime();
+            QuickSortEx q=new QuickSortEx(1000);
+            q.sort();
+            getCpuTime();
             Log.d("Profiler", batteryCap.invoke(powerProInstance, null).toString());
             Log.d("Profiler", averagePower.invoke(powerProInstance, new Object[]{"cpu.active", 1}).toString());
             Log.d("Profiler", averagePower.invoke(powerProInstance, new Object[]{"cpu.active", 2}).toString());
@@ -144,6 +149,23 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e) {e.printStackTrace();}
     }
 
+    public void bubbleSort(int maxelements) {
+        int input[] = new int[maxelements];
+        int temp;
+        for (int i = 0; i < input.length; i++)
+            input[i] = (int) (Math.random() * 100);
+        for (int i = input.length; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (input[j] > input[j + 1]) {
+                    temp = input[j];
+                    input[j] = input[j + 1];
+                    input[j + 1] = temp;
+                }
+            }
+
+        }
+
+    }
 //    private String cmdCat(String f){
 //
 //        String[] command = {"cat", f};
